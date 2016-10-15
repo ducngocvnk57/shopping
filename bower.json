@@ -1,0 +1,22 @@
+{
+  "name": "shop",
+  "homepage": "https://github.com/ducngocvnk57/shopping",
+  "authors": [
+    "Duc Ngoc <ducngocvnk57@gmail.com>"
+  ],
+  "description": "bower for shop",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Ionicons": "ionicons#^2.0.1"
+  }
+}

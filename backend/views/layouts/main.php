@@ -1,6 +1,5 @@
 <?php
 use yii\helpers\Html;
-
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -23,7 +22,12 @@ if (Yii::$app->controller->action->id === 'login') {
     }
 
     dmstr\web\AdminLteAsset::register($this);
-
+    if(class_exists(('backend\assets\IoniconsAsset'))){
+        backend\assets\IoniconsAsset::register($this);
+    }
+//    if(class_exists(('backend\assets\AdminLteAsset'))){
+//        backend\assets\AdminLteAsset::register($this);
+//    }
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
     <?php $this->beginPage() ?>
