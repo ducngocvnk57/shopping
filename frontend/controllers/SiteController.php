@@ -73,9 +73,9 @@ class SiteController extends Controller
   public function actionIndex()
   {
     $product = Product::find()->all();
-    foreach ($product as $key => $value){
-      var_dump($value);
-    }
+   foreach ($product as $key => $value){
+     var_dump($value->getProductClass());
+   }
     return $this->render('index');
   }
 
