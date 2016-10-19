@@ -6,7 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
+use common\models\User;
 /**
  * Site controller
  */
@@ -26,7 +26,7 @@ class SiteController extends Controller
                     'allow' => true,
                 ],
                 [
-                    'actions' => ['logout', 'index'],
+                    'actions' => ['logout', 'index','set-session'],
                     'allow' => true,
                     'roles' => ['@'],
                 ],
@@ -60,9 +60,15 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
+    $user = Yii::$app->session->get("user");
     return $this->render('index');
   }
-
+  public function actionSetSession()
+  {
+    $temp = User::find()->all();
+    Yii::$app->session->set("user",$temp);
+    die();
+  }
   /**
    * Login action.
    *

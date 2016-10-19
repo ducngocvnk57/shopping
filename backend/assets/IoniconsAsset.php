@@ -9,7 +9,7 @@ use yii\web\AssetBundle;
  */
 class IoniconsAsset extends AssetBundle
 {
-  public $sourcePath = '@bower/Ionicons';
+  public $sourcePath = '@bower/ionicons';
   public $css = [
         'css/ionicons.min.css',
     ];

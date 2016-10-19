@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use common\models\read\Product;
 /**
  * Site controller
  */
@@ -72,6 +72,10 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
+    $product = Product::find()->all();
+    foreach ($product as $key => $value){
+      var_dump($value);
+    }
     return $this->render('index');
   }
 

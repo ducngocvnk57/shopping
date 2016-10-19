@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "09a43a54d04c9acdaff6fcd4262d6766",
-    "content-hash": "c7dff59f672d0349bbec30a196c0572a",
+    "hash": "4622e7600269de60f288c2f1b0d545f2",
+    "content-hash": "9c6c7b3a40ae89ae31a99bd4838c6f55",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -94,6 +94,47 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/ionicons",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/driftyco/ionicons.git",
+                "reference": "ecb4b806831005c25b97ed9089fbb1d7dcc0879c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/driftyco/ionicons/zipball/ecb4b806831005c25b97ed9089fbb1d7dcc0879c",
+                "reference": "ecb4b806831005c25b97ed9089fbb1d7dcc0879c",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "css/ionicons.css",
+                    "fonts/*"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "builder",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Ionicons - free and beautiful icons from the creators of Ionic Framework",
+            "keywords": [
+                "fonts",
+                "icon font",
+                "icons",
+                "ionic",
+                "web font"
             ]
         },
         {
@@ -441,6 +482,84 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
+        },
+        {
+            "name": "npm-asset/jquery.inputmask",
+            "version": "3.3.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/jquery.inputmask/-/jquery.inputmask-3.3.3.tgz",
+                "reference": null,
+                "shasum": "0b1a4ec231f544150ef831dcf727002a91f7f6ac"
+            },
+            "require-dev": {
+                "npm-asset/browserify": ">=13.0.1,<14.0.0",
+                "npm-asset/browserify-shim": ">=3.8.11,<4.0.0",
+                "npm-asset/grunt": ">=1.0.1,<2.0.0",
+                "npm-asset/grunt-available-tasks": ">=0.6.0,<0.7.0",
+                "npm-asset/grunt-browserify": ">=5.0.0,<6.0.0",
+                "npm-asset/grunt-bump": ">=0.8.0,<0.9.0",
+                "npm-asset/grunt-cli": ">=1.2.0,<2.0.0",
+                "npm-asset/grunt-contrib-clean": ">=1.0.0,<2.0.0",
+                "npm-asset/grunt-contrib-uglify": ">=1.0.1,<2.0.0",
+                "npm-asset/grunt-eslint": ">=19.0.0,<20.0.0",
+                "npm-asset/grunt-karma": ">=2.0.0,<3.0.0",
+                "npm-asset/grunt-nuget": ">=0.1.5,<0.2.0",
+                "npm-asset/grunt-release": ">=0.14.0,<0.15.0",
+                "npm-asset/grunt-shell": ">=1.1.2,<2.0.0",
+                "npm-asset/jqlite": ">=0.2.25,<0.3.0",
+                "npm-asset/karma": ">=1.1.1,<2.0.0",
+                "npm-asset/karma-chrome-launcher": ">=1.0.1,<2.0.0",
+                "npm-asset/karma-firefox-launcher": ">=1.0.0,<2.0.0",
+                "npm-asset/karma-ie-launcher": ">=1.0.0,<2.0.0",
+                "npm-asset/karma-phantomjs-launcher": ">=1.0.0,<2.0.0",
+                "npm-asset/karma-qunit": ">=1.1.0,<2.0.0",
+                "npm-asset/karma-requirejs": ">=1.0.0,<2.0.0",
+                "npm-asset/load-grunt-tasks": ">=3.2.0,<4.0.0",
+                "npm-asset/phantomjs-prebuilt": ">=2.1.7,<3.0.0",
+                "npm-asset/qunitjs": ">=1.23.1,<2.0.0",
+                "npm-asset/requirejs": ">=2.1.20,<3.0.0"
+            },
+            "type": "npm-asset-library",
+            "extra": {
+                "npm-asset-bugs": {
+                    "url": "https://github.com/RobinHerbots/jquery.inputmask/issues"
+                },
+                "npm-asset-files": [
+                    "dist/inputmask/",
+                    "extra/",
+                    "dist/jquery.inputmask.bundle.js"
+                ],
+                "npm-asset-main": "./dist/inputmask/jquery.inputmask.js",
+                "npm-asset-directories": [],
+                "npm-asset-repository": {
+                    "type": "git",
+                    "url": "git+https://github.com/RobinHerbots/jquery.inputmask.git"
+                },
+                "npm-asset-scripts": {
+                    "test": "grunt validate"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Herbots",
+                    "url": "https://github.com/RobinHerbots"
+                }
+            ],
+            "description": "jquery.inputmask is a jquery plugin which create an input mask.",
+            "homepage": "https://github.com/RobinHerbots/jquery.inputmask",
+            "keywords": [
+                "form",
+                "input",
+                "inputmask",
+                "jquery",
+                "jquery-plugin",
+                "mask",
+                "plugins"
+            ]
         },
         {
             "name": "rmrevin/yii2-fontawesome",

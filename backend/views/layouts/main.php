@@ -25,9 +25,9 @@ if (Yii::$app->controller->action->id === 'login') {
     if(class_exists(('backend\assets\IoniconsAsset'))){
         backend\assets\IoniconsAsset::register($this);
     }
-//    if(class_exists(('backend\assets\AdminLteAsset'))){
-//        backend\assets\AdminLteAsset::register($this);
-//    }
+    if(class_exists(('backend\assets\InputMaskAsset'))){
+        backend\assets\InputMaskAsset::register($this);
+    }
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
     <?php $this->beginPage() ?>
