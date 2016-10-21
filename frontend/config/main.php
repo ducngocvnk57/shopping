@@ -50,5 +50,8 @@ return [
         'order' => [
             'class' => 'frontend\modules\order\Order',
         ],
+        'search' => [
+            'class' => 'frontend\modules\search\Search'
+        ]
     ],
 ];

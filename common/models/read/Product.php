@@ -14,13 +14,13 @@ class Product extends Read implements CartItem
 
   public static function tableName()
   {
-    return 'dtb_product';
+    return 'cms_products_item';
   }
   public function getProductClass()
    {// TODO: Implement getPrice() method.
      return $this->hasMany(ProductClass::className(),['product_id'=>'product_id'])->all();
    }
    public function getPrice(){
-     return $this->getProductClass()[0]['price01'];
+
    }
 }

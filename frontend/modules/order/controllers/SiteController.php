@@ -3,10 +3,8 @@ namespace frontend\modules\order\controllers;
 
 use Yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginForm;
-use common\models\User;
+use yii\data\Pagination;
+use common\models\read\Product;
 /**
  * Site controller
  */
@@ -15,31 +13,6 @@ class SiteController extends Controller
   /**
    * @inheritdoc
    */
-  public function behaviors()
-  {
-    return [
-        'access' => [
-            'class' => AccessControl::className(),
-            'rules' => [
-                [
-                    'actions' => ['login', 'error'],
-                    'allow' => true,
-                ],
-                [
-                    'actions' => ['logout', 'index','set-session'],
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ],
-        'verbs' => [
-            'class' => VerbFilter::className(),
-            'actions' => [
-                'logout' => ['post'],
-            ],
-        ],
-    ];
-  }
 
   /**
    * @inheritdoc
@@ -53,52 +26,35 @@ class SiteController extends Controller
     ];
   }
 
+
   /**
    * Displays homepage.
    *
-   * @return string
+   * @return mixed
    */
   public function actionIndex()
   {
-    $user = Yii::$app->session->get("user");
-    return $this->render('index');
-  }
-  public function actionSetSession()
-  {
-    $temp = User::find()->all();
-    Yii::$app->session->set("user",$temp);
-    die();
-  }
-  /**
-   * Login action.
-   *
-   * @return string
-   */
-  public function actionLogin()
-  {
-    if (!Yii::$app->user->isGuest) {
-      return $this->goHome();
+    $request = Yii::$app->request;
+    $query = Product::find();
+    if(($parentid = $request->get('parentid'))!=null){
+      $query =  $query->where(['parentid' => $parentid]);
     }
-
-    $model = new LoginForm();
-    if ($model->load(Yii::$app->request->post()) && $model->login()) {
-      return $this->goBack();
-    } else {
-      return $this->render('login', [
-          'model' => $model,
-      ]);
-    }
+    $countQuery = clone $query;
+    $pages = new Pagination(['totalCount' => $countQuery->count()]);
+    $models = $query->offset($pages->offset)
+        ->limit($pages->limit)
+        ->all();
+    return $this->render('index', [
+        'models' => $models,
+        'pages' => $pages,
+    ]);
   }
-
-  /**
-   * Logout action.
-   *
-   * @return string
-   */
-  public function actionLogout()
+  public function actionDetail($id)
   {
-    Yii::$app->user->logout();
-
-    return $this->goHome();
+    $model = Product::findOne($id);
+    return $this->render('detail',[
+       'model' => $model
+    ]);
   }
+
 }
