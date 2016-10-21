@@ -46,3 +46,13 @@ common/config
 ( luu y db la mac dinh cho phep ghi db2 la database de doc ) 
 4. Chay migarte
  ```
+ Cau hinh modules
+ ----------------------
+ ```
+ http://www.yiiframework.com/doc-2.0/guide-structure-modules.html#
+ 
+ Vi du san trong frontend/modules/order
+ 
+config modules trong config/main.php
+router : /index.php?r=order/site/index
+```

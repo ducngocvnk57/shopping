@@ -46,4 +46,9 @@ return [
         */
     ],
     'params' => $params,
+    'modules' => [
+        'order' => [
+            'class' => 'frontend\modules\order\Order',
+        ],
+    ],
 ];
