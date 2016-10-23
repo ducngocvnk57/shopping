@@ -13,7 +13,6 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\data\ActiveDataProvider;
-use common\models\read\Product;
 /**
  * Site controller
  */
@@ -73,12 +72,7 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
-    $dataProvider = new ActiveDataProvider([
-        'query' => Product::find(),
-    ]);
-    return $this->render('index',[
-        'dataProvider' => $dataProvider
-    ]);
+    return $this->render('index');
   }
 
   /**

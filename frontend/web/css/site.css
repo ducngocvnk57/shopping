@@ -81,7 +81,9 @@ a.desc:after {
 .grid-view .filters select {
     min-width: 50px;
 }
-
+li{
+    list-style: none;
+}
 .hint-block {
     display: block;
     margin-top: 5px;
@@ -109,4 +111,77 @@ a.desc:after {
 
 .nav > li > form > button:hover {
     text-decoration: none;
+}
+.images{
+    height: 300px;
+    overflow: hidden;
+    width: 100%;
+}
+.images img{
+    width: 100%;
+    height: auto;
+}
+
+
+/*Cart item */
+.cart_items{
+    display: inherit;
+    width: 80%;
+}
+th,td{
+    text-align: center;
+}
+td{
+    vertical-align: middle!important;
+}
+td .cart_remove a{
+    font-size: 20px;
+    color: #9d9d9d;
+}
+.cart_item_quanlity{
+    font-size: 20px;
+}
+.cart_items .images{
+    width: 100%;
+    height:auto;
+}
+.cart_items .thumbnail{
+    float: left;
+    height: auto;
+    width: 25%;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+.cart_items .caption{
+    float: left;
+    width: 75%;
+    padding: 10px;
+}
+.cart_item_action{
+
+}
+.cart_item_action li{
+    float: left;
+    margin-right: 30px;
+    list-style: none;
+    border: 1px solid;
+    font-size: 21px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.cart_item_price{
+    font-size: 18px;
+}
+.cart_total_price{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+.next_action{
+    float: right;
+}
+.next_action li button{
+    width: 300px;
+    margin-bottom: 10px;
 }

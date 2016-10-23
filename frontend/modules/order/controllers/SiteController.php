@@ -4,7 +4,8 @@ namespace frontend\modules\order\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\data\Pagination;
-use common\models\read\Product;
+use frontend\modules\order\models\Product;
+use frontend\modules\order\models\ProductCategory;
 /**
  * Site controller
  */
@@ -34,9 +35,12 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
+  /**
+   * Get product and pagging
+   */
     $request = Yii::$app->request;
     $query = Product::find();
-    if(($parentid = $request->get('parentid'))!=null){
+    if(($parentid = $request->get('categoryid'))!=null){
       $query =  $query->where(['parentid' => $parentid]);
     }
     $countQuery = clone $query;
@@ -44,9 +48,15 @@ class SiteController extends Controller
     $models = $query->offset($pages->offset)
         ->limit($pages->limit)
         ->all();
+    /**
+     * get product category
+     */
+    $categorys = ProductCategory::find()->where(['level'=>3])->all();
+
     return $this->render('index', [
         'models' => $models,
         'pages' => $pages,
+        'categorys' => $categorys
     ]);
   }
   public function actionDetail($id)
