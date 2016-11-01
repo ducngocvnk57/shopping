@@ -6,11 +6,12 @@
  * Time: 11:21
  */
 
-namespace frontend\services;
+namespace frontend\modules\order\services;
 
 
 interface CartItem
 {
   public function getPrice();
-
+  public function getId();
+  public function getTitle();
 }

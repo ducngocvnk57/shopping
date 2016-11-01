@@ -12,7 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use common\models\read\Product;
+use yii\data\ActiveDataProvider;
 /**
  * Site controller
  */
@@ -72,10 +72,6 @@ class SiteController extends Controller
    */
   public function actionIndex()
   {
-    $product = Product::find()->all();
-   foreach ($product as $key => $value){
-     var_dump($value->getProductClass());
-   }
     return $this->render('index');
   }
 
