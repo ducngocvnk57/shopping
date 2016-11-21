@@ -45,7 +45,7 @@ class CartController extends Controller
       $cartService = new CartService();
       $cartService->addProduct($productClass, $quantily)->save();
     }
-    $this->redirect('?r=order/cart/index');
+    $this->redirect(['cart/index']);
   }
   public function actionUp(){
     $request = Yii::$app->request;
@@ -54,7 +54,7 @@ class CartController extends Controller
       $cartService = new CartService();
       $cartService->upProductQuantity($product_id)->save();
     }
-    $this->redirect('?r=order/cart/index');
+    $this->redirect(['cart/index']);
   }
   public function actionDown(){
     $request = Yii::$app->request;
@@ -63,7 +63,7 @@ class CartController extends Controller
       $cartService = new CartService();
       $cartService->downProductQuantity($product_id)->save();
     }
-    $this->redirect('?r=order/cart/index');
+    $this->redirect(['cart/index']);
   }
   public function actionRemove(){
     $request = Yii::$app->request;
@@ -72,9 +72,9 @@ class CartController extends Controller
       $cartService = new CartService();
       $cartService->removeProduct($product_id)->save();
     }
-    $this->redirect('?r=order/cart/index');
+    $this->redirect(['cart/index']);
   }
   public function actionSetQuantity(){
-    $this->redirect('?r=order/cart/index');
+    $this->redirect(['cart/index']);
   }
 }

@@ -37,15 +37,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+
     ],
+    'defaultRoute' => 'order/site/index',
     'params' => $params,
     'modules' => [
         'order' => [

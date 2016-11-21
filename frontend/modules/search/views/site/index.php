@@ -1,8 +1,9 @@
 <?php
+use yii\helpers\Url;
 ?>
 <div class="row">
     <div class="col-md-3">
-        <form action="?r=search/site/index" method="post">
+        <form action="<?=Url::to([''])?>" method="post">
             <div class="input-group">
                 <input class="form-control" placeholder="Search" name="searchKeyword" type="text">
                 <div class="input-group-btn">
@@ -22,7 +23,7 @@
                             <figure class="images" ><img  src="<?=$item->image;?>" alt=""></figure>
                             <div class="caption">
                                 <h4 class="pull-right">Dong</h4>
-                                <h4><a href="?r=order/site/detail&id=<?=$item->id?>"><?=$item->title?></a>
+                                <h4><a href="<?=Url::to(['/order/site/detail',"id"=>$item->id])?>"><?=$item->title?></a>
                                 </h4>
                                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
                             </div>

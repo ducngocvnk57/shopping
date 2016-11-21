@@ -1,5 +1,6 @@
 <?php
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 echo DetailView::widget([
     'model' => $model,
     'attributes' => [
@@ -16,7 +17,7 @@ use yii\widgets\ActiveForm;
 $form = ActiveForm::begin([
     'id' => 'login-form',
     'options' => ['class' => 'form-inline'],
-    'action' => '?r=order/cart/add',
+    'action' => Url::to(['cart/add'])
 ]) ?>
   <input type="hidden" value="<?=$model->id?>" class="form-control" name="product_id">
   <label for="email">Số lượng:</label>

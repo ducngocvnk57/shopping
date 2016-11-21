@@ -1,3 +1,4 @@
+<?php use yii\helpers\Url ?>
 <div class="container">
   <h2>Shopping Cart</h2>
   <table class="table table-condensed">
@@ -16,7 +17,7 @@
     <tr>
       <td class="col-sm-1 col-lg-1 col-md-1">
         <div class="cart_remove">
-          <a href="?r=order/cart/remove&product_id=<?=$product->getId()?>" class="fa fa-times"></a>
+          <a href="<?=Url::to(['cart/remove',"product_id"=>$product->getId()])?>" class="fa fa-times"></a>
         </div>
       </td>
       <td class="col-sm-5 col-lg-5 col-md-5">
@@ -34,8 +35,8 @@
       <td class="cart_item_action col-sm-2 col-lg-2 col-md-2">
         <p class="cart_item_quanlity"><?=$item->getQuanlity()?></p>
         <ul>
-          <li><a href="?r=order/cart/down&product_id=<?=$product->getId()?>"><i class="fa fa-minus" aria-hidden="true"></i></a></li>
-          <li><a href="?r=order/cart/up&product_id=<?=$product->getId()?>"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+          <li><a href="<?=Url::to(['cart/down',"product_id"=>$product->getId()])?>"><i class="fa fa-minus" aria-hidden="true"></i></a></li>
+          <li><a href="<?=Url::to(['cart/up',"product_id"=>$product->getId()])?>"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
         </ul>
       </td>
       <td class="cart_item_price"><?=number_format($item->getUnitPrice())?> VNĐ</td>
@@ -49,8 +50,8 @@
     </tbody>
   </table>
   <ul class="next_action">
-    <li><a href=""><button type="button" class="btn btn-danger">Checkout</button></a></li>
-    <li><a href="?r=order/site/index"><button type="button" class="btn btn-primary">Continue Shopping</button></a></li>
+    <li><a href="<?=Url::to(['checkout/index'])?>"><button type="button" class="btn btn-danger">Checkout</button></a></li>
+    <li><a href="<?=Url::to(['site/index'])?>"><button type="button" class="btn btn-primary">Continue Shopping</button></a></li>
   </ul>
 </div>
 <?php
