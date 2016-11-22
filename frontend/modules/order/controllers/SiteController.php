@@ -61,7 +61,6 @@ class SiteController extends Controller
   public function actionDetail($id)
   {
     $model = Product::findOne($id);
-    //$images = json_decode(base64_decode($model['images']));
     return $this->render('detail',[
        'model' => $model
     ]);

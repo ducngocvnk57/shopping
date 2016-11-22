@@ -81,7 +81,7 @@ class CheckoutController extends Controller
       return $this->render("complete");
     }
   }
-  
+
   protected function getCustomerInfo(){
     if(!Yii::$app->user->isGuest){
       $user = Yii::$app->user->identity;
