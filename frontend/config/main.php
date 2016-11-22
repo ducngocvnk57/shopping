@@ -20,6 +20,20 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
+        'mail' => [
+        'class' => 'yii\swiftmailer\Mailer',
+        'viewPath' => '@frontend/mail',
+        'useFileTransport' => false,//set this property to false to send mails to real email addresses
+        //comment the following array to send mail using php's mail function
+        'transport' => [
+            'class' => 'Swift_SmtpTransport',
+            'host' => 'smtp.gmail.com',
+            'username' => 'as1vnk57@gmail.com',
+            'password' => 'ngockhanhnhatvu',
+            'port' => '587',
+            'encryption' => 'tls',
+                        ],
+              ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
