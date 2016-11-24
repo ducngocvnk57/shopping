@@ -11,7 +11,8 @@ use yii\widgets\ActiveForm;
                     <img id="zoom_03" src="<?=$model->image?>" data-zoom-image="images/products/Large/products-01.jpg" alt="">
                   </div>
                   <div class="thum-image">
-                    <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 240px; height: 55px; margin: 0px; overflow: hidden;"><ul id="gallery_01" class="prev-thum" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 840px; height: 55px;">
+                    <div class="caroufredsel_wrapper" style="display: block;text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 240px; height: 55px; margin: 0px; overflow: hidden;">
+                      <ul id="gallery_01" class="prev-thum" style="text-align: left; padding:0px;float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 840px; height: 55px;">
                       <?php foreach(json_decode(base64_decode($model->images)) as $key => $image) {
                         # code...
                       ?>
@@ -21,7 +22,8 @@ use yii\widgets\ActiveForm;
                         </a>
                       </li>
                       <?php } ?>
-                    </ul></div>
+                    </ul>
+                  </div>
                     <a class="control-left" id="thum-prev" href="javascript:void(0);" style="display: block;">
                       <i class="fa fa-chevron-left">
                       </i>
@@ -33,15 +35,15 @@ use yii\widgets\ActiveForm;
                   </div>
                 </div>
                 <div class="products-description">
-                  <h5 class="name">
-                    Lincoln Corner Unit Products
-                  </h5>
-                  <p>
-                    Availability:
-                    <span class=" light-red">
-                      In Stock
-                    </span>
-                  </p>
+                  <h4 class="name">
+                    <?=$model->title?>
+                  </h4>
+                  <h4>
+                    Size : <?=$model->size_product?>
+                  </h4>
+                  <h4>
+                    Color : <?=$model->color_product?>
+                  </h4>
                   <p>
                     Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrie ces posuere cubilia curae. Proin lectus ipsum, gravida etds mattis vulps utate, tristique ut lectus. Sed et lorem nunc...
                   </p>
@@ -49,7 +51,7 @@ use yii\widgets\ActiveForm;
                   <div class="price">
                     Price :
                     <span class="new_price">
-                      <?=$model->getPrice();?>
+                      <?=number_format($model->getPrice());?>
                       <sup>
                         đ
                       </sup>
@@ -77,18 +79,6 @@ use yii\widgets\ActiveForm;
                     <div class="button_group">
                       <button class="button" >
                         Add To Cart
-                      </button>
-                      <button class="button compare">
-                        <i class="fa fa-exchange">
-                        </i>
-                      </button>
-                      <button class="button favorite">
-                        <i class="fa fa-heart-o">
-                        </i>
-                      </button>
-                      <button class="button favorite">
-                        <i class="fa fa-envelope-o">
-                        </i>
                       </button>
                     </div>
                     <?php ActiveForm::end() ?>

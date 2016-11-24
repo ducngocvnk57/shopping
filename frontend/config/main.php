@@ -16,7 +16,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'frontend\modules\order\models\Member',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
@@ -67,6 +67,9 @@ return [
         ],
         'search' => [
             'class' => 'frontend\modules\search\Search'
+        ],
+        'user' => [
+            'class' => 'frontend\modules\user\User'
         ]
     ],
 ];

@@ -1,5 +1,5 @@
 <?php
-namespace frontend\modules\order\models;
+namespace frontend\modules\user\models;
 
 use common\models\User;
 

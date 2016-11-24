@@ -7,7 +7,7 @@ use frontend\modules\order\services\CartService;
 use frontend\modules\order\models\Product;
 use frontend\modules\order\models\CustomInfoForm;
 use frontend\modules\order\models\Order;
-use common\models\LoginForm;
+use frontend\models\MemberLoginForm;
 /**
  *
  */
@@ -31,7 +31,7 @@ class CheckoutController extends Controller
       if($session->has('noMember')){
         return $this->redirect(['checkout/confirm']);
       }
-      $model = new LoginForm();
+      $model = new MemberLoginForm();
       if ($model->load(Yii::$app->request->post()) && $model->login()) {
         return $this->redirect('confirm');
       } else {
