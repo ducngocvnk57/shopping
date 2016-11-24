@@ -2,6 +2,8 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+$this->title = $model->title;
 ?>
 
             <div class="col-md-9 col-md-offset-2" >

@@ -1,4 +1,7 @@
-<?php use yii\helpers\Url;?>
+<?php
+use yii\helpers\Url;
+$this->title = "homepage";
+?>
 <div class="row">
   <div class="col-md-3">
     <p class="lead">Shop Name</p>

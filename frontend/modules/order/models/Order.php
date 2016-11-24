@@ -40,7 +40,8 @@ class Order extends ActiveRecord
     Order::saveOrder($cart,$user);
   }
   public static function getOrder(){
-    $order = Order::findOne(122);
+    $order = Order::find()->one();
+    $data =  unserialize($order->data);
     var_dump($data);
   }
 }

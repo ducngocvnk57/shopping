@@ -1,4 +1,8 @@
-<?php use yii\helpers\Url ?>
+<?php
+use yii\helpers\Url;
+
+$this->title = "Shopping cart";
+?>
 <div class="container">
   <h2>Shopping Cart</h2>
   <table class="table table-condensed">
