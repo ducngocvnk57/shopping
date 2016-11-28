@@ -29,15 +29,53 @@ class SiteController extends Controller
         } else {
             $text = "";
         }
-        $query = Product::find()->where(['like', 'title', $text]);
-        $page = new Pagination(['defaultPageSize' => 8, 'totalCount' => $query->count()]);
-        $model = $query->offset($page->offset)
-            ->limit($page->limit)
+        if (isset($_POST['filter'])) {
+            switch ($_POST['filter'][0]) {
+                case '0':
+                    $fromPrice = 0;
+                    $toPrice = 100000;
+                    $defaultFilterValue = '0';
+                    break;
+                case '1':
+                    $fromPrice = 100000;
+                    $toPrice = 200000;
+                    $defaultFilterValue = '1';
+                    break;
+                case '2':
+                    $fromPrice = 200000;
+                    $toPrice = 300000;
+                    $defaultFilterValue = '2';
+                    break;
+                case '3':
+                    $fromPrice = 300000;
+                    $toPrice = 400000;
+                    $defaultFilterValue = '3';
+                    break;
+                case '4':
+                    $fromPrice = 40000;
+                    $toPrice = 1000000000;
+                    $defaultFilterValue = '4';
+                    break;
+                default:
+                    $fromPrice = 0;
+                    $toPrice = 1000000000;
+                    $defaultFilterValue = '-1';
+                    break;
+            }
+        } else {
+            $fromPrice = 0;
+            $toPrice = 1000000000;
+            $defaultFilterValue = '-1';
+        }
+        $query = Product::find()->where(['like', 'title', $text])->andWhere(['between', 'our_price', $fromPrice, $toPrice]);
+        $model = $query->orderBy('our_price')
+            ->asArray()
             ->all();
 
         return $this->render('index', [
             'model' => $model,
-            'page' => $page
+            'query' => $text,
+            'defaultFilterValue' => $defaultFilterValue
         ]);
     }
 }
