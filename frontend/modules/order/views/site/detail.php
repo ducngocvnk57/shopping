@@ -15,14 +15,18 @@ $this->title = $model->title;
                   <div class="thum-image">
                     <div class="caroufredsel_wrapper" style="display: block;text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 240px; height: 55px; margin: 0px; overflow: hidden;">
                       <ul id="gallery_01" class="prev-thum" style="text-align: left; padding:0px;float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 840px; height: 55px;">
-                      <?php foreach(json_decode(base64_decode($model->images)) as $key => $image) {
-                        # code...
-                      ?>
-                      <li style="width: 60px;">
-                        <a href="#" data-image="<?=$image?>" data-zoom-image="images/products/Large/products-01.jpg">
-                          <img src="<?=$image?>" alt="">
-                        </a>
-                      </li>
+                      <?php
+                      $images = json_decode(base64_decode($model->images));
+                      if(is_array($images) || is_object($images)){
+                        foreach($images as $key => $image) {
+                          # code...
+                        ?>
+                        <li style="width: 60px;">
+                          <a href="#" data-image="<?=$image?>" data-zoom-image="images/products/Large/products-01.jpg">
+                            <img src="<?=$image?>" alt="">
+                          </a>
+                        </li>
+                        <?php } ?>
                       <?php } ?>
                     </ul>
                   </div>
@@ -99,7 +103,6 @@ $this->title = $model->title;
                     </div>
                     <div id="menu1" class="tab-pane fade">
                       <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                   </div>
                 </div>

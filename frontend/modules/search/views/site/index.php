@@ -43,8 +43,8 @@ use yii\helpers\Url;
                         <div class="thumbnail" style="height: 500px;overflow: hidden">
                             <figure class="images" ><img  src="<?=$item['image']?>" alt=""></figure>
                             <div class="caption">
-                                <h4 class="pull-right">Dong</h4>
-                                <h4><a href="<?=Url::to(['/order/site/detail',"id"=>$item->id])?>"><?=$item->title?></a>
+                                <h4 class="pull-right"><?= $item['our_price'] ?> Dong</h4>
+                              <h4><a href="<?=Url::to(['/order/site/detail',"id"=>$item['id']])?>"><?=$item['title']?></a></h4>
                                 <p>See more snippets like this online store item at</p>
                             </div>
                             <div class="ratings">

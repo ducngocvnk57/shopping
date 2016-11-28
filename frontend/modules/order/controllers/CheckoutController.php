@@ -26,6 +26,9 @@ class CheckoutController extends Controller
 
   public function actionIndex(){
     $cart = new CartService();
+    if($cart->isEmpty()){
+      return $this->redirect(['site/index']);
+    }
     if(Yii::$app->user->isGuest){
       $session = Yii::$app->session;
       if($session->has('noMember')){

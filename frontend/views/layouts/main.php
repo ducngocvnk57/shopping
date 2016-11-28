@@ -9,6 +9,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\modules\order\services\CartService;
+
 dmstr\web\AdminLteAsset::register($this);
 AppAsset::register($this);
 ?>
@@ -34,10 +36,14 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $cart = new CartService();
+    $item_size = sizeof($cart->getCartItems());
     $menuItems = [
         ['label' => 'Home', 'url' => ['/order/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Search', 'url' => ['/search/site/index']],
+        ['label' => 'Cart('.$item_size.')', 'url' => ['/order/cart/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/user/site/signup']];
