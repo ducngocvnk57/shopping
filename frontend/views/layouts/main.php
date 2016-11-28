@@ -40,8 +40,6 @@ AppAsset::register($this);
     $item_size = sizeof($cart->getCartItems());
     $menuItems = [
         ['label' => 'Home', 'url' => ['/order/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Search', 'url' => ['/search/site/index']],
         ['label' => 'Cart('.$item_size.')', 'url' => ['/order/cart/index']],
     ];

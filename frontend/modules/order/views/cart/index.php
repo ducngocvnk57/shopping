@@ -38,9 +38,14 @@ $this->title = "Shopping cart";
       </td>
       <td class="cart_item_action col-sm-2 col-lg-2 col-md-2">
         <p class="cart_item_quanlity"><?=$item->getQuanlity()?></p>
+
         <ul>
-          <li><a href="<?=Url::to(['cart/down',"product_id"=>$product->getId()])?>"><i class="fa fa-minus" aria-hidden="true"></i></a></li>
-          <li><a href="<?=Url::to(['cart/up',"product_id"=>$product->getId()])?>"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+          <?php if($item->getQuanlity() < 2){?>
+            <li class="disabled"><a href="<?=Url::to(['cart/down',"product_id"=>$product->getId()])?>"><i class="fa fa-minus" aria-hidden="true"></i></a></li>
+          <?php }else{?>
+            <li><a href="<?=Url::to(['cart/down',"product_id"=>$product->getId()])?>"><i class="fa fa-minus" aria-hidden="true"></i></a></li>
+          <?php } ?>
+            <li><a href="<?=Url::to(['cart/up',"product_id"=>$product->getId()])?>"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
         </ul>
       </td>
       <td class="cart_item_price"><?=number_format($item->getUnitPrice())?> VNĐ</td>
