@@ -1,7 +1,6 @@
 <?php
 use frontend\modules\order\services\CartService;
 use yii\helpers\Url;
-
 $cart = new CartService();
 ?>
 <div class="site-login">
@@ -59,11 +58,11 @@ $cart = new CartService();
           </table>
           <p class="cart_total_price">Total : <?=number_format($cart->totalPrice())?> VNĐ</p><br>
           <a href="<?=Url::to(['checkout/complete'])?>"><button type="button" class="btn btn-primary">Confirm</button></a>
-          <button onclick="goBack()">Go Back</button>
-          <script>
-          function goBack() {
-              window.history.back();
-          }
+          <?php if(!Yii::$app->user->isGuest){?>
+             <a href="<?=Url::to(['cart/index'])?>"><button type="button" class="btn btn-primary">Go Back</button></a>
+          <?php }else{ ?>
+              <a href="<?=Url::to(['checkout/no-member'])?>"><button type="button" class="btn btn-primary">Go Back</button></a>
+          <?php } ?>
           </script>
       </div>
   </div>
