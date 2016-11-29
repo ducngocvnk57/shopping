@@ -2,7 +2,7 @@
 namespace frontend\modules\order\models;
 
 use yii\base\Model;
-
+use Yii;
 /**
  * Signup form
  */
@@ -38,7 +38,17 @@ class CustomInfoForm extends Model
 
         ];
     }
-
+    public function init()
+    {
+      $session = Yii::$app->session;
+      $user = $session->get('noMember');
+      $this->name = $user->name;
+      $this->phone = $user->phone;
+      $this->email = $user->email;
+      $this->address = $user->address;
+      $this->company = $user->address;
+      parent::init();
+    }
     /**
      * Signs user up.
      *

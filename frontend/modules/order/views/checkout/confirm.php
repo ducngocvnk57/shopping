@@ -59,6 +59,12 @@ $cart = new CartService();
           </table>
           <p class="cart_total_price">Total : <?=number_format($cart->totalPrice())?> VNĐ</p><br>
           <a href="<?=Url::to(['checkout/complete'])?>"><button type="button" class="btn btn-primary">Confirm</button></a>
+          <button onclick="goBack()">Go Back</button>
+          <script>
+          function goBack() {
+              window.history.back();
+          }
+          </script>
       </div>
   </div>
 </div>

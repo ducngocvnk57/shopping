@@ -12,10 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="member-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Member', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -27,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'address',
             'phone',
             'company',
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','template' => '{view} {delete}'],
         ],
     ]); ?>
 </div>

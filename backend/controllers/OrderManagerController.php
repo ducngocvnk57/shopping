@@ -8,26 +8,40 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * OrderManagerController implements the CRUD actions for Order model.
  */
 class OrderManagerController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+  /**
+   * @inheritdoc
+   */
+  public function behaviors()
+  {
+    return [
+        'access' => [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'actions' => ['login', 'error'],
+                    'allow' => true,
+                ],
+                [
+                    'actions' => ['index','view','delete'],
+                    'allow' => true,
+                    'roles' => ['@'],
                 ],
             ],
-        ];
-    }
+        ],
+        'verbs' => [
+            'class' => VerbFilter::className(),
+            'actions' => [
+                'logout' => ['post'],
+            ],
+        ],
+    ];
+  }
 
     /**
      * Lists all Order models.
