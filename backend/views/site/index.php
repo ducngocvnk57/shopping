@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
-
+use frontend\modules\order\models\Order;
+use frontend\modules\user\models\Member;
 $this->title =  "admin";
  ?>
         <!-- Main content -->
@@ -11,7 +12,7 @@ $this->title =  "admin";
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?=Order::find()->where(['status'=>0])->count()?></h3>
 
                             <p>New Orders</p>
                         </div>
@@ -41,7 +42,7 @@ $this->title =  "admin";
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?=Member::find()->count()?></h3>
 
                             <p>User Registrations</p>
                         </div>

@@ -51,6 +51,7 @@ class OrderManagerController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Order::find(),
+            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]]
         ]);
 
         return $this->render('index', [
@@ -65,8 +66,11 @@ class OrderManagerController extends Controller
      */
     public function actionView($id)
     {
+      $model = $this->findModel($id);
+      $model->status = 1;
+      $model->save();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model
         ]);
     }
 
