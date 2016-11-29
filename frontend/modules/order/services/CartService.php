@@ -27,9 +27,11 @@ class CartService
   private function setProductQuantity($ProductClass, $quantity){
 
   }
+
   public function getCartItems(){
     return $this->cart_items;
   }
+
   public function addProduct($productClass, $quantity = 1)
   {
     if($productClass!=null) {
@@ -37,10 +39,12 @@ class CartService
     }
     return $this;
   }
+
   public function getProductQuantity($productClassId)
   {
     return $this->cart_items[$productClassId]->quanlity;
   }
+
   public function removeProduct($productClassId){
     unset($this->cart_items[$productClassId]);
     return $this;
@@ -53,6 +57,7 @@ class CartService
     }
     return $this;
   }
+
   public function downProductQuantity($productClassId)
   {
     if($this->cart_items[$productClassId]){
@@ -60,11 +65,21 @@ class CartService
     }
     return $this;
   }
+
   public function save(){
     $this->session->set('cart',$this->cart_items);
   }
+
   public function clear(){
     $this->session->set('cart',null);
+  }
+
+  public function isEmpty(){
+    if(sizeof($this->cart_items)==0){
+      return true;
+    }else{
+      return false;
+    }
   }
   public function totalPrice(){
     $totalPrice = 0;

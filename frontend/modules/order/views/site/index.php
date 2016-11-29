@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Url;
+$this->title = "homepage";
+?>
 <div class="row">
   <div class="col-md-3">
     <p class="lead">Shop Name</p>
@@ -5,7 +9,7 @@
       <?php
       foreach ($categorys as $category){
       ?>
-      <a href="?r=order/site/index&categoryid=<?=$category->id?>" class="list-group-item"><?=$category->title?></a>
+      <a href="<?=Url::to(['',"categoryid"=>$category->id])?>" class="list-group-item"><?=$category->title?></a>
       <?php } ?>
     </div>
   </div>
@@ -46,14 +50,19 @@
       foreach ($models as $model) {
       ?>
       <div class="col-sm-3 col-lg-3 col-md-3">
-        <div class="thumbnail" style="height: 500px;overflow: hidden">
-          <figure class="images" ><img  src="<?=$model->image;?>" alt=""></figure>
-          <div class="caption">
-            <h4 class="pull-right"><?=$model->getPrice()?>Dong</h4>
-            <h4><a href="?r=order/site/detail&id=<?=$model->id?>"><?=$model->title?></a>
-            </h4>
-            <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-          </div>
+        <div class="thumbnail" style="height: 400px;overflow: hidden">
+          <a href="<?=Url::to(['site/detail',"id"=>$model->id])?>">
+            <figure class="images" ><img  src="<?=$model->image;?>" alt=""></figure>
+            <div class="caption">
+              <h4><a href="<?=Url::to(['site/detail',"id"=>$model->id])?>"><?=$model->title?></a></h4>
+              <h4>Price : <?=number_format($model->getPrice())?>
+                <sup>
+                đ
+                </sup>
+              </h4>
+              <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+            </div>
+          </a>
           <div class="ratings">
             <p class="pull-right"><?=$model->viewed?> veviewed</p>
             <p>

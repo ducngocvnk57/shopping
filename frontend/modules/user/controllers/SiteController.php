@@ -1,5 +1,5 @@
 <?php
-namespace frontend\controllers;
+namespace frontend\modules\user\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;
@@ -7,11 +7,11 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use frontend\models\MemberLoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use frontend\modules\user\models\MemberLoginForm;
+use frontend\modules\user\models\PasswordResetRequestForm;
+use frontend\modules\user\models\ResetPasswordForm;
+use frontend\modules\user\models\SignupForm;
+
 use yii\data\ActiveDataProvider;
 /**
  * Site controller
@@ -66,16 +66,6 @@ class SiteController extends Controller
   }
 
   /**
-   * Displays homepage.
-   *
-   * @return mixed
-   */
-  public function actionIndex()
-  {
-    return $this->render('index');
-  }
-
-  /**
    * Logs in a user.
    *
    * @return mixed
@@ -106,39 +96,6 @@ class SiteController extends Controller
     Yii::$app->user->logout();
 
     return $this->goHome();
-  }
-
-  /**
-   * Displays contact page.
-   *
-   * @return mixed
-   */
-  public function actionContact()
-  {
-    $model = new ContactForm();
-    if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-      if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-        Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-      } else {
-        Yii::$app->session->setFlash('error', 'There was an error sending email.');
-      }
-
-      return $this->refresh();
-    } else {
-      return $this->render('contact', [
-          'model' => $model,
-      ]);
-    }
-  }
-
-  /**
-   * Displays about page.
-   *
-   * @return mixed
-   */
-  public function actionAbout()
-  {
-    return $this->render('about');
   }
 
   /**

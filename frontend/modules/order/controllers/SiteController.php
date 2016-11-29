@@ -43,8 +43,7 @@ class SiteController extends Controller
     if(($parentid = $request->get('categoryid'))!=null){
       $query =  $query->where(['parentid' => $parentid]);
     }
-    $countQuery = clone $query;
-    $pages = new Pagination(['totalCount' => $countQuery->count()]);
+    $pages = new Pagination(['totalCount' => $query->count()]);
     $models = $query->offset($pages->offset)
         ->limit($pages->limit)
         ->all();

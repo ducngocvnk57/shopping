@@ -16,10 +16,24 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'frontend\modules\order\models\Member',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
+        'mail' => [
+        'class' => 'yii\swiftmailer\Mailer',
+        'viewPath' => '@frontend/mail',
+        'useFileTransport' => false,//set this property to false to send mails to real email addresses
+        //comment the following array to send mail using php's mail function
+        'transport' => [
+            'class' => 'Swift_SmtpTransport',
+            'host' => 'smtp.gmail.com',
+            'username' => 'as1vnk57@gmail.com',
+            'password' => 'ngockhanhnhatvu',
+            'port' => '587',
+            'encryption' => 'tls',
+                        ],
+              ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
@@ -37,15 +51,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => true,
             'rules' => [
             ],
         ],
-        */
+
     ],
+    'defaultRoute' => 'order/site/index',
     'params' => $params,
     'modules' => [
         'order' => [
@@ -53,6 +67,9 @@ return [
         ],
         'search' => [
             'class' => 'frontend\modules\search\Search'
+        ],
+        'user' => [
+            'class' => 'frontend\modules\user\User'
         ]
     ],
 ];
