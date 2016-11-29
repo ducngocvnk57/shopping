@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii;
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\order\models\Order */
 
@@ -41,7 +40,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
                     <tr>
                      <td align="center"><?=$product->id?></td>
                      <td align="center"><?=$product->getTitle()?></td>
-                     <td align="center"><img width="92" src="<?=yii::$app->params['frontend_domain'].$product->image?>" style="display:block;margin-top:20px"></td>
+                     <td align="center"><img width="92" src="<?=$product->image?>" style="display:block;margin-top:20px"></td>
                      <td align="center"><?=number_format($product->getPrice())?> VNĐ</td>
                      <td align="center"><?=$item->getQuanlity()?></td>
                      <td align="center"><?=number_format($item->getUnitPrice())?> VNĐ</td>
