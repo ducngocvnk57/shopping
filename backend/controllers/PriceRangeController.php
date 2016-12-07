@@ -29,7 +29,7 @@ class PriceRangeController extends Controller
                        'allow' => true,
                    ],
                    [
-                       'actions' => ['index','view','delete','update'],
+                       'actions' => ['index','view','delete','update','create'],
                        'allow' => true,
                        'roles' => ['@'],
                    ],

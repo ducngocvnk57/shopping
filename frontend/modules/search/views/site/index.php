@@ -20,13 +20,15 @@ use backend\models\PriceRange;
                       <?php
                         $price =  isset($_GET['Price']) ? $_GET['Price'] : '';
                         $range = PriceRange::find()->orderBy('to_price')->asArray()->all();
+                        $max = 0;
                       ?>
                         <select class="form-control" name="Price" id="sel1">
                           <option value="-1" <?= $price == '-1' ? "selected" : ""?>>All product</option>
-                          <?php foreach ($range as $key => $value){?>
+                          <?php foreach ($range as $key => $value){ $max = number_format($value['to_price']);
+                            ?>
                             <option value="<?=$value['id']?>"  <?=$price == $value['id'] ? "selected" : ""?>><?=number_format($value['from_price']).'-'.number_format($value['to_price'])?></option>
                           <?php } ?>
-                            <option value="-2"  <?=$price == -2 ? "selected" : ""?>>Above <?=number_format($value['to_price'])?></option>
+                            <option value="-2"  <?=$price == -2 ? "selected" : ""?>>Above <?=$max?></option>
                         </select>
                     </div>
                     <div class="col-md-4">
