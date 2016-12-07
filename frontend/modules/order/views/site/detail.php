@@ -80,7 +80,7 @@ $this->title = $model->title;
                       ]) ?>
                         <input type="hidden" value="<?=$model->id?>" class="form-control" name="product_id">
                         <label for="email">Số lượng:</label>
-                        <input type="number" value="1" class="form-control" name="quantily">
+                        <input type="number" min="1" value="1" class="form-control" name="quantily">
                     </div>
                     <div class="button_group">
                       <button class="button" >

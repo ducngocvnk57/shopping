@@ -24,58 +24,20 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        if (isset($_POST['searchKeyword'])) {
-            $text = $_POST['searchKeyword'];
-        } else {
-            $text = "";
+        $params = $_GET;
+        $product = Product::find();
+        foreach ($_GET as $key => $value) {
+            $searchClass = 'frontend\modules\search\controllers\Search'.$key;
+            if(class_exists($searchClass))
+              $product = $searchClass::search($value,$product);
         }
-        if (isset($_POST['filter'])) {
-            switch ($_POST['filter'][0]) {
-                case '0':
-                    $fromPrice = 0;
-                    $toPrice = 100000;
-                    $defaultFilterValue = '0';
-                    break;
-                case '1':
-                    $fromPrice = 100000;
-                    $toPrice = 200000;
-                    $defaultFilterValue = '1';
-                    break;
-                case '2':
-                    $fromPrice = 200000;
-                    $toPrice = 300000;
-                    $defaultFilterValue = '2';
-                    break;
-                case '3':
-                    $fromPrice = 300000;
-                    $toPrice = 400000;
-                    $defaultFilterValue = '3';
-                    break;
-                case '4':
-                    $fromPrice = 40000;
-                    $toPrice = 1000000000;
-                    $defaultFilterValue = '4';
-                    break;
-                default:
-                    $fromPrice = 0;
-                    $toPrice = 1000000000;
-                    $defaultFilterValue = '-1';
-                    break;
-            }
-        } else {
-            $fromPrice = 0;
-            $toPrice = 1000000000;
-            $defaultFilterValue = '-1';
-        }
-        $query = Product::find()->where(['like', 'title', $text])->andWhere(['between', 'our_price', $fromPrice, $toPrice]);
-        $model = $query->orderBy('our_price')
-            ->asArray()
-            ->all();
-
+        $query = $product->orderBy('our_price');
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count]);
+        $model =   $query->offset($pagination->offset)->limit($pagination->limit)->asArray()->all();
         return $this->render('index', [
             'model' => $model,
-            'query' => $text,
-            'defaultFilterValue' => $defaultFilterValue
+            'pages' => $pagination
         ]);
     }
 }
