@@ -42,11 +42,13 @@ class CustomInfoForm extends Model
     {
       $session = Yii::$app->session;
       $user = $session->get('noMember');
-      $this->name = $user->name;
-      $this->phone = $user->phone;
-      $this->email = $user->email;
-      $this->address = $user->address;
-      $this->company = $user->address;
+      if(isset($user)){
+        $this->name = $user->name;
+        $this->phone = $user->phone;
+        $this->email = $user->email;
+        $this->address = $user->address;
+        $this->company = $user->address;
+      }
       parent::init();
     }
     /**

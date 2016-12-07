@@ -40,19 +40,9 @@ Cau hinh project de chay
 ```
 1. Cai composer
 2. Composer install ( Buoc nay neu loi phai cai them bower, npm)
-3. Import eccube3_db.sql ( db de doc )
+3. Import benryhomme_data.sql ( db de doc )
 4.Cau hinh db :
 common/config
-( luu y db la mac dinh cho phep ghi db2 la database de doc ) 
+( luu y db la mac dinh cho phep ghi db2 la database de doc )
 4. Chay migarte
  ```
- Cau hinh modules
- ----------------------
- ```
- http://www.yiiframework.com/doc-2.0/guide-structure-modules.html#
- 
- Vi du san trong frontend/modules/order
- 
-config modules trong config/main.php
-router : /index.php?r=order/site/index
-```

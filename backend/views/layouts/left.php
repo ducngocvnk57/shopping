@@ -34,6 +34,7 @@
                     ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard', 'url' => ['/']],
                     ['label' => 'Manager User', 'icon' => 'fa fa-user', 'url' => ['/user-manager/index']],
                     ['label' => 'Manager Order', 'icon' => 'fa fa-shopping-bag', 'url' => ['/order-manager/index']],
+                    ['label' => 'Manager Ranger', 'icon' => 'fa fa-shopping-bag', 'url' => ['/price-range/index']],
                 ],
             ]
         ) ?>
